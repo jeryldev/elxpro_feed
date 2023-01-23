@@ -46,7 +46,10 @@ defmodule ElxproFeedWeb.SpecificationControllerTest do
   describe "update specification" do
     setup [:create_specification]
 
-    test "renders specification when data is valid", %{conn: conn, specification: %Specification{id: id} = specification} do
+    test "renders specification when data is valid", %{
+      conn: conn,
+      specification: %Specification{id: id} = specification
+    } do
       conn = put(conn, ~p"/api/specifications/#{specification}", specification: @update_attrs)
       assert %{"id" => ^id} = json_response(conn, 200)["data"]
 

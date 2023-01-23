@@ -6,7 +6,7 @@ defmodule ElxproFeed.Accounts do
   import Ecto.Query, warn: false
   alias ElxproFeed.Repo
 
-  alias ElxproFeed.Accounts.{User, UserToken, UserNotifier}
+  alias ElxproFeed.Accounts.{User, UserNotifier, UserToken}
 
   ## Database getters
 

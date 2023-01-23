@@ -12,7 +12,8 @@ defmodule ElxproFeedWeb.SpecificationController do
   end
 
   def create(conn, %{"specification" => specification_params}) do
-    with {:ok, %Specification{} = specification} <- Specifications.create_specification(specification_params) do
+    with {:ok, %Specification{} = specification} <-
+           Specifications.create_specification(specification_params) do
       conn
       |> put_status(:created)
       |> put_resp_header("location", ~p"/api/specifications/#{specification}")
@@ -28,7 +29,8 @@ defmodule ElxproFeedWeb.SpecificationController do
   def update(conn, %{"id" => id, "specification" => specification_params}) do
     specification = Specifications.get_specification!(id)
 
-    with {:ok, %Specification{} = specification} <- Specifications.update_specification(specification, specification_params) do
+    with {:ok, %Specification{} = specification} <-
+           Specifications.update_specification(specification, specification_params) do
       render(conn, :show, specification: specification)
     end
   end
