@@ -32,3 +32,5 @@ elxpro_feed-*.tar
 npm-debug.log
 /assets/node_modules/
 
+# local json testing
+json_testing.http
