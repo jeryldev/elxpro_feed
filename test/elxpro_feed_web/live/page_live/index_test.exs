@@ -18,7 +18,7 @@ defmodule ElxproFeedWeb.PageLive.IndexTest do
 
     assert has_element?(view, "[data-role=feed-header][data-id=#{feed_id}]")
     assert has_element?(view, "[data-role=feed-author][data-id=#{feed_id}]", "Jeryl Estopace")
-    assert has_element?(view, "[data-role=feed-role][data-id=#{feed_id}]", "Elixir Developer")
+    assert has_element?(view, "[data-role=feed-role][data-id=#{feed_id}]", "Software Engineer")
     assert has_element?(view, "[data-role=feed-date][data-id=#{feed_id}]", "published at January")
     assert has_element?(view, "[data-role=feed-text][data-id=#{feed_id}]")
   end
