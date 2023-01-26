@@ -1,25 +1,59 @@
-<aside class="col-start-1 col-end-4 bg-neutral-800 rounded-lg overflow-hidden">
-  <img
-    class="object-cover w-full h-[4.5rem]"
-    src="https://images.unsplash.com/photo-1551033406-611cf9a28f67?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=50"
-    alt="code image"
-  />
-  <div data-role="profile" class="flex flex-col items-center -mt-8">
-    <img
-      class="w-16 h-16 rounded-lg border-2 border-cyan-700 outline-2 outline-cyan-200"
-      src="https://avatars.githubusercontent.com/u/26645913?v=4"
-      alt="profile image"
-    />
-    <strong class="mt-4 text-neutral-100 leading-relaxed">Jeryl Estopace</strong>
-    <span class="text-neutral-400 leading-relaxed">Elixir Developer</span>
-  </div>
-  <footer class="border-t border-neutral-400 mt-6 py-8 flex justify-center">
-    <a
-      href="#"
-      class="w-2/3 bg-transparent border-2 border-cyan-500 text-cyan-500 h-12 font-bold items-center no-underline rounded-lg flex flex-row gap-3 justify-center hover:bg-cyan-600 hover:text-white transition-all"
+<.live_component module={Sidebar} id="sidebar" />
+<main data-role="feeds" class="col-start-4 col-end-12">
+  <article
+    :for={feed <- @feeds}
+    id={"feed-" <> feed.id}
+    class="first:mt-0 mt-8 bg-neutral-800 rounded-lg p-10"
+  >
+    <header class="flex items-center justify-between">
+      <div class="flex items-center gap-4">
+        <img
+          src={feed.avatar_url}
+          alt="avatar_image"
+          data-role="avatar-url"
+          data-id={feed.id}
+          class="w-16 h-16 rounded-lg border-2 border-neutral-800 outline-2 outline-cyan-500"
+        />
+        <div>
+          <strong class="block text-neutral-100 leading-relaxed"><%= feed.author %></strong>
+          <span class="block text-neutral-400 leading-relaxed"><%= feed.role %></span>
+        </div>
+      </div>
+      <time class="text-sm text-neutral-400">published at January</time>
+    </header>
+
+    <div class="mt-6 text-neutral-300 leading-relaxed post-content">
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium laboriosam deserunt natus.
+
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequatur maiores iusto totam?
+
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae quasi obcaecati perferendis.
+      <a href="">elxpro/jeryl</a>
+    </div>
+
+    <form
+      action="#"
+      class="w-full mt-6 pt-6 border-t border-neutral-600 leading-relaxed flex flex-col group"
     >
-      <Heroicons.pencil_square class="w-4 h-4" /> Edit Profile
-    </a>
-  </footer>
-</aside>
-<main>feed <%= self() |> :erlang.pid_to_list() %></main>
+      <label for="content" class="text-neutral-100">Post your comment</label>
+      <textarea
+        name="content"
+        id="content"
+        cols="30"
+        rows="10"
+        placeholder="Post your comment"
+        class="bg-neutral-900 border-0 resize-none h-24 p-4 rounded-sm text-neutral-100 mt-4"
+      >
+      </textarea>
+
+      <footer class="max-h-0 invisible group-focus-within:visible group-focus-within:max-h-[none]">
+        <button
+          type="submit"
+          class="px-4 py-6 mt-4 rounded-lg bg-cyan-900 not:disabled:hover:bg-cyan-600 text-white font-bold cursor-pointer transition disabled:opacity-70 disabled:cursor-not-allowed"
+        >
+          Make a Comment
+        </button>
+      </footer>
+    </form>
+  </article>
+</main>

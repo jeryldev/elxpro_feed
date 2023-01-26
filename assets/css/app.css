@@ -19,3 +19,7 @@ body, input, textarea, button {
 @import "tailwindcss/utilities";
 
 /* This file is for your main application CSS */
+
+:focus {
+  @apply shadow-sm shadow-cyan-500 outline-transparent;
+}
