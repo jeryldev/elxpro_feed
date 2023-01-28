@@ -10,19 +10,28 @@ defmodule ElxproFeedWeb.PageLive.Index do
         id: "123",
         avatar_url: "https://avatars.githubusercontent.com/u/26645913?v=4",
         author: "Jeryl Estopace",
-        role: "Software Engineer"
+        role: "Software Engineer",
+        comments: [
+          %{
+            id: "456",
+            comment:
+              "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos mollitia dolorem aut."
+          }
+        ]
       },
       %{
         id: "1234",
         avatar_url: "https://avatars.githubusercontent.com/u/26645913?v=4",
         author: "Gustavo Oliviera",
-        role: "Elixir Developer"
+        role: "Elixir Developer",
+        comments: []
       },
       %{
         id: "1235",
         avatar_url: "https://avatars.githubusercontent.com/u/26645913?v=4",
         author: "Joe Morris",
-        role: "Principal Engineer"
+        role: "Principal Engineer",
+        comments: []
       }
     ]
 
