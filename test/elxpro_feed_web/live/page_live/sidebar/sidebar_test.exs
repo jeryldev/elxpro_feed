@@ -1,4 +1,4 @@
-defmodule ElxproFeedWeb.PageLive.Sidebar.SidebarTest do
+defmodule ElxproFeedWeb.PageLive.SidebarTest do
   use ElxproFeedWeb.ConnCase
   import Phoenix.LiveViewTest
 

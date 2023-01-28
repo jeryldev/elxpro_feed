@@ -1,0 +1,70 @@
+<article id={"feed-" <> @feed.id} class="first:mt-0 mt-8 bg-neutral-800 rounded-lg p-10">
+  <header class="flex items-center justify-between" data-role="feed-header" data-id={@feed.id}>
+    <div class="flex items-center gap-4">
+      <img
+        src={@feed.avatar_url}
+        alt="avatar_image"
+        data-role="avatar-url"
+        data-id={@feed.id}
+        class="w-16 h-16 rounded-lg border-2 border-neutral-800 outline-2 outline-cyan-500"
+      />
+      <div>
+        <strong
+          class="block text-neutral-100 leading-relaxed"
+          data-role="feed-author"
+          data-id={@feed.id}
+        >
+          <%= @feed.author %>
+        </strong>
+        <span
+          class="block text-neutral-400 leading-relaxed"
+          data-role="feed-role"
+          data-id={@feed.id}
+        >
+          <%= @feed.role %>
+        </span>
+      </div>
+    </div>
+    <time class="text-sm text-neutral-400" data-role="feed-date" data-id={@feed.id}>
+      published at January
+    </time>
+  </header>
+
+  <div
+    class="mt-6 text-neutral-300 leading-relaxed post-content"
+    data-role="feed-text"
+    data-id={@feed.id}
+  >
+    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium laboriosam deserunt natus.
+
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequatur maiores iusto totam?
+
+    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae quasi obcaecati perferendis.
+    <a href="">elxpro/jeryl</a>
+  </div>
+
+  <form
+    action="#"
+    class="w-full mt-6 pt-6 border-t border-neutral-600 leading-relaxed flex flex-col group"
+  >
+    <label for="content" class="text-neutral-100">Post your comment</label>
+    <textarea
+      name="content"
+      id="content"
+      cols="30"
+      rows="10"
+      placeholder="Post your comment"
+      class="bg-neutral-900 border-0 resize-none h-24 p-4 rounded-sm text-neutral-100 mt-4"
+    >
+      </textarea>
+
+    <footer class="max-h-0 invisible group-focus-within:visible group-focus-within:max-h-[none]">
+      <button
+        type="submit"
+        class="px-4 py-6 mt-4 rounded-lg bg-cyan-900 not:disabled:hover:bg-cyan-600 text-white font-bold cursor-pointer transition disabled:opacity-70 disabled:cursor-not-allowed"
+      >
+        Make a Comment
+      </button>
+    </footer>
+  </form>
+</article>
