@@ -1,12 +1,13 @@
 <article id={"feed-" <> @feed.id} class="first:mt-0 mt-8 bg-neutral-800 rounded-lg p-10">
   <header class="flex items-center justify-between" data-role="feed-header" data-id={@feed.id}>
     <div class="flex items-center gap-4">
-      <img
-        src={@feed.avatar_url}
-        alt="avatar_image"
-        data-role="avatar-url"
-        data-id={@feed.id}
-        class="w-16 h-16 rounded-lg border-2 border-neutral-800 outline-2 outline-cyan-500"
+      <.avatar
+        data_role="avatar-url"
+        data_id={@feed.id}
+        avatar_alt="avatar_image"
+        avatar_url={@feed.avatar_url}
+        avatar_class="w-16 h-16 rounded-lg border-2 border-neutral-800 outline-2 outline-blue-500"
+        has_border={false}
       />
       <div>
         <strong
@@ -42,6 +43,13 @@
     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae quasi obcaecati perferendis.
     <a href="">elxpro/jeryl</a>
   </div>
-
   <.post_comment_form />
+  <div class="mt-8" id={"comments-" <> @feed.id}>
+    <.live_component
+      :for={comment <- @feed.comments}
+      module={Comment}
+      comment={comment}
+      id={comment.id}
+    />
+  </div>
 </article>
