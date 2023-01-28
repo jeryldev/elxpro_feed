@@ -14,7 +14,7 @@ defmodule ElxproFeedWeb.PageLive.Index do
         comments: [
           %{
             id: "456",
-            comment:
+            content:
               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos mollitia dolorem aut."
           }
         ]
