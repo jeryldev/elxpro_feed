@@ -36,12 +36,7 @@
     data-role="feed-text"
     data-id={@feed.id}
   >
-    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium laboriosam deserunt natus.
-
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequatur maiores iusto totam?
-
-    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae quasi obcaecati perferendis.
-    <a href="">elxpro/jeryl</a>
+    <%= raw(Earmark.as_html!(@feed.content)) %>
   </div>
   <.post_comment_form />
   <div class="mt-8" id={"comments-" <> @feed.id}>
