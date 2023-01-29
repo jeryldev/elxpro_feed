@@ -1,7 +1,7 @@
-<div id={"comment-" <> @id} class="mt-6 flex gap-4">
+<div id={"comment-" <> @id} class="mt-6 flex gap-4 hover:bg-neutral-900 p-4 rounded-lg">
   <.avatar data_role="avatar" data_id={@comment.id} has_border={false} />
   <div class="flex-1">
-    <div class="bg-neutral-700 rounded-lg p-4">
+    <div class="rounded-lg">
       <header class="flex items-start justify-between">
         <div>
           <strong data-role="user-name" data-id={@comment.id}>Jeryl Estopace</strong>

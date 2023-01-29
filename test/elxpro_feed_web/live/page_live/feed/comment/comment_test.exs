@@ -1,11 +1,13 @@
 defmodule ElxproFeedWeb.PageLive.Feed.CommentTest do
   use ElxproFeedWeb.ConnCase
+  import ElxproFeed.CommentsFixtures
   import Phoenix.LiveViewTest
 
   test "load main comment elements", %{conn: conn} do
+    comment = comment_fixture()
     {:ok, view, _html} = live(conn, ~p"/")
 
-    comment_id = "456"
+    comment_id = comment.id
 
     assert has_element?(view, "#comment-#{comment_id}")
     assert has_element?(view, "[data-role=avatar][data-id=#{comment_id}]")
