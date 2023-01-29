@@ -17,7 +17,7 @@ defmodule ElxproFeedWeb.PageLive.Shared.Components do
       data-id={@data_id}
       src={@avatar_url}
       alt={@avatar_alt}
-      class={[@has_border && "border-2 border-blue-700", @avatar_class]}
+      class={if @has_border, do: "border-2 border-blue-700 " <> @avatar_class, else: @avatar_class}
     />
     """
   end
