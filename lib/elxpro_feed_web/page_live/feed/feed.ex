@@ -8,9 +8,16 @@ defmodule ElxproFeedWeb.PageLive.Feed do
   alias ElxproFeed.Comments
   alias ElxproFeed.Comments.Comment, as: CommentSchema
 
+  def update(%{delete_comment: comment}, socket) do
+    feed = socket.assigns.feed
+    comments = Enum.reject(feed.comments, &(&1.id == comment.id))
+    feed = Map.put(feed, :comments, comments)
+    {:ok, assign(socket, :feed, feed)}
+  end
+
   def update(%{new_comment: new_comment}, socket) do
     feed = socket.assigns.feed
-    comments = feed.comments ++ [new_comment]
+    comments = [new_comment | feed.comments]
     feed = Map.put(feed, :comments, comments)
     {:ok, assign(socket, :feed, feed)}
   end

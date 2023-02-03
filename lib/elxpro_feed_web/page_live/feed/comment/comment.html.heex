@@ -21,6 +21,8 @@
           type="button"
           data-role="delete"
           data-id={@comment.id}
+          phx-target={@myself}
+          phx-click="delete_comment"
           class="bg-transparent border-0 cursor-pointer text-gray-400 hover:text-red-500 transition rounded-sm"
         >
           <Heroicons.trash class="w-4 h-4" />

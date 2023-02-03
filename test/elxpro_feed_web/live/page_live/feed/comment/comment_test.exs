@@ -38,4 +38,22 @@ defmodule ElxproFeedWeb.PageLive.Feed.CommentTest do
            |> element(like_element)
            |> render() =~ "#{current_like_count + 1}"
   end
+
+  test "delete comment", %{conn: conn} do
+    comment = comment_fixture()
+    {:ok, view, html} = live(conn, ~p"/")
+
+    comment_id = comment.id
+    assert has_element?(view, "#comment-#{comment_id}")
+
+    delete_element = "[data-role=delete][data-id=#{comment_id}]"
+    assert has_element?(view, delete_element)
+
+    # delete a comment
+    view
+    |> element(delete_element)
+    |> render_click()
+
+    refute has_element?(view, "#comment-#{comment_id}")
+  end
 end
