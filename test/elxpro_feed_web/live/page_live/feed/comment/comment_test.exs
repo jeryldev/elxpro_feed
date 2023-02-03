@@ -18,4 +18,24 @@ defmodule ElxproFeedWeb.PageLive.Feed.CommentTest do
     assert has_element?(view, "[data-role=footer][data-id=#{comment_id}]")
     assert has_element?(view, "[data-role=like][data-id=#{comment_id}]", "Like")
   end
+
+  test "like comment", %{conn: conn} do
+    comment = comment_fixture()
+    {:ok, view, _html} = live(conn, ~p"/")
+
+    like_element = "[data-role=like][data-id=#{comment.id}]"
+    assert has_element?(view, like_element)
+
+    current_like_count = comment.likes
+
+    # like a comment
+    view
+    |> element(like_element)
+    |> render_click()
+
+    # like count should increase by 1
+    assert view
+           |> element(like_element)
+           |> render() =~ "#{current_like_count + 1}"
+  end
 end
