@@ -41,7 +41,7 @@ defmodule ElxproFeedWeb.PageLive.Feed.CommentTest do
 
   test "delete comment", %{conn: conn} do
     comment = comment_fixture()
-    {:ok, view, html} = live(conn, ~p"/")
+    {:ok, view, _html} = live(conn, ~p"/")
 
     comment_id = comment.id
     assert has_element?(view, "#comment-#{comment_id}")
