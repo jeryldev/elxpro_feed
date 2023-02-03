@@ -12,8 +12,8 @@ defmodule ElxproFeedWeb.PageLive.Feed.Comment do
     comment_params = %{"likes" => likes}
 
     case Comments.update_comment(comment, comment_params) do
-      {:ok, _comment} ->
-        {:noreply, update(socket, :comment, fn comment -> %{comment | likes: likes} end)}
+      {:ok, comment} ->
+        {:noreply, update(socket, :comment, &%{&1 | likes: comment.likes})}
 
       {:error, _} ->
         {:noreply, socket}
