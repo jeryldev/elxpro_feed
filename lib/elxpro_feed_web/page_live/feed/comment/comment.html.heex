@@ -1,7 +1,7 @@
-<div id={"comment-" <> @id} class="mt-6 flex gap-4 hover:bg-neutral-900 p-4 rounded-lg">
+<div id={"comment-" <> @id} class="mt-6 flex gap-4 p-4 rounded-lg">
   <.avatar data_role="avatar" data_id={@comment.id} has_border={false} />
   <div class="flex-1">
-    <div class="rounded-lg">
+    <div class="bg-gray-700 rounded-lg p-4">
       <header class="flex items-start justify-between">
         <div>
           <strong data-role="user-name" data-id={@comment.id}>Jeryl Estopace</strong>
@@ -10,7 +10,7 @@
             dateTime="2023"
             data-role="date"
             data-id={@comment.id}
-            class="block text-xs leading-relaxed text-neutral-400"
+            class="block text-xs leading-relaxed text-gray-400"
           >
             around 1 hour ago
           </time>
@@ -21,12 +21,12 @@
           type="button"
           data-role="delete"
           data-id={@comment.id}
-          class="bg-transparent border-0 cursor-pointer text-neutral-400 hover:text-red-500 transition rounded-sm"
+          class="bg-transparent border-0 cursor-pointer text-gray-400 hover:text-red-500 transition rounded-sm"
         >
           <Heroicons.trash class="w-4 h-4" />
         </button>
       </header>
-      <p class="mt-4 text-neutral-300" data-role="content" data-id={@comment.id}>
+      <p class="mt-4 text-gray-300" data-role="content" data-id={@comment.id}>
         <%= @comment.content %>
       </p>
       <footer data-role="footer" data-id={@comment.id} class="mt-4">
@@ -35,7 +35,7 @@
           type="button"
           data-role="like"
           data-id={@comment.id}
-          class="bg-transparent border-0 cursor-pointer text-neutral-400 flex items-center transition rounded-sm hover:text-blue-600"
+          class="bg-transparent border-0 cursor-pointer text-gray-400 flex items-center transition rounded-sm hover:text-blue-600"
         >
           <Heroicons.hand_thumb_up class="w-4 h-4 mr-2" /> Like <span class="ml-2">10</span>
         </button>
