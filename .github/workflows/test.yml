@@ -27,7 +27,7 @@ jobs:
           mix local.hex --force
           mix local.hex --force
           mix deps.get
-          mix ecto.reset
+          mix ecto.create
       - name: Check coverage and tests
         run: mix coveralls.html
     services:
