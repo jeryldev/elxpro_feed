@@ -1,0 +1,46 @@
+<article id={"feed-" <> @feed.id} class="first:mt-0 mt-8 bg-gray-800 rounded-lg p-10">
+  <header class="flex items-center justify-between" data-role="feed-header" data-id={@feed.id}>
+    <div class="flex items-center gap-4">
+      <.avatar
+        data_role="avatar-url"
+        data_id={@feed.id}
+        avatar_alt="avatar_image"
+        avatar_url={@feed.avatar_url}
+        avatar_class="w-16 h-16 rounded-lg border-2 border-gray-800 outline-2 outline-blue-500"
+        has_border={false}
+      />
+      <div>
+        <strong
+          class="block text-gray-100 leading-relaxed"
+          data-role="feed-author"
+          data-id={@feed.id}
+        >
+          <%= @feed.author %>
+        </strong>
+        <span class="block text-gray-400 leading-relaxed" data-role="feed-role" data-id={@feed.id}>
+          <%= @feed.role %>
+        </span>
+      </div>
+    </div>
+    <time class="text-sm text-gray-400" data-role="feed-date" data-id={@feed.id}>
+      published at January
+    </time>
+  </header>
+
+  <div
+    class="mt-6 text-gray-300 leading-relaxed feed-content"
+    data-role="feed-text"
+    data-id={@feed.id}
+  >
+    <%= raw(Earmark.as_html!(@feed.content)) %>
+  </div>
+  <.post_comment_form />
+  <div class="mt-8" id={"comments-" <> @feed.id}>
+    <.live_component
+      :for={comment <- @feed.comments}
+      module={Comment}
+      comment={comment}
+      id={comment.id}
+    />
+  </div>
+</article>
