@@ -24,21 +24,26 @@ defmodule ElxproFeedWeb.PageLive.Feed.CommentTest do
     {:ok, view, _html} = live(conn, ~p"/")
 
     like_element = "[data-role=like][data-id=#{comment.id}]"
-    assert has_element?(view, like_element)
+    like_count_element = "[data-role=like_count][data-id=#{comment.id}]"
 
-    current_like_count = comment.likes
+    # initial like count
+    assert has_element?(view, like_count_element, Integer.to_string(comment.likes))
+
+    assert view
+           |> element(like_count_element)
+           |> render() =~ Integer.to_string(comment.likes)
 
     # like a comment
     view
     |> element(like_element)
     |> render_click()
 
-    new_like_count = current_like_count + 1
-
     # like count should increase by 1
+    assert has_element?(view, like_count_element, Integer.to_string(comment.likes + 1))
+
     assert view
-           |> element("[data-likes=#{new_like_count}]")
-           |> render() =~ "#{new_like_count}"
+           |> element(like_count_element)
+           |> render() =~ Integer.to_string(comment.likes + 1)
   end
 
   test "delete comment - success", %{conn: conn} do
