@@ -19,7 +19,7 @@ defmodule ElxproFeedWeb.PageLive.Feed.CommentTest do
     assert has_element?(view, "[data-role=like][data-id=#{comment_id}]", "Like")
   end
 
-  test "like comment", %{conn: conn} do
+  test "like comment - success", %{conn: conn} do
     comment = comment_fixture()
     {:ok, view, _html} = live(conn, ~p"/")
 
@@ -33,13 +33,15 @@ defmodule ElxproFeedWeb.PageLive.Feed.CommentTest do
     |> element(like_element)
     |> render_click()
 
+    new_like_count = current_like_count + 1
+
     # like count should increase by 1
     assert view
-           |> element(like_element)
-           |> render() =~ "#{current_like_count + 1}"
+           |> element("[data-likes=#{new_like_count}]")
+           |> render() =~ "#{new_like_count}"
   end
 
-  test "delete comment", %{conn: conn} do
+  test "delete comment - success", %{conn: conn} do
     comment = comment_fixture()
     {:ok, view, _html} = live(conn, ~p"/")
 

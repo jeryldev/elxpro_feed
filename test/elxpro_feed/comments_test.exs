@@ -31,6 +31,13 @@ defmodule ElxproFeed.CommentsTest do
       assert comment.likes == 42
     end
 
+    test "create_comment/1 with invalid data do not create a comment" do
+      invalid_attrs = %{content: "some content", likes: "wrong input"}
+
+      assert {:error, %Ecto.Changeset{} = reason} = Comments.create_comment(invalid_attrs)
+      assert reason.errors == [likes: {"is invalid", [type: :integer, validation: :cast]}]
+    end
+
     test "create_comment/1 with invalid data returns error changeset" do
       assert {:error, %Ecto.Changeset{}} = Comments.create_comment(@invalid_attrs)
     end
@@ -42,6 +49,18 @@ defmodule ElxproFeed.CommentsTest do
       assert {:ok, %Comment{} = comment} = Comments.update_comment(comment, update_attrs)
       assert comment.content == "some updated content"
       assert comment.likes == 43
+    end
+
+    test "update_comment/2 with invalid data do not update the comment" do
+      comment = comment_fixture()
+      invalid_update_attrs = %{content: "some updated content", likes: "wrong input"}
+
+      assert {:error, %Ecto.Changeset{} = reason} =
+               Comments.update_comment(comment, invalid_update_attrs)
+
+      assert reason.errors == [likes: {"is invalid", [type: :integer, validation: :cast]}]
+      assert comment.content == "some content"
+      assert comment.likes == 42
     end
 
     test "update_comment/2 with invalid data returns error changeset" do

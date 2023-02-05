@@ -63,7 +63,7 @@ defmodule ElxproFeedWeb.PageLive.FeedTest do
              "disabled=\"disabled\""
   end
 
-  test "add comment", %{conn: conn} do
+  test "add comment - success", %{conn: conn} do
     comment = comment_fixture()
     {:ok, view, _html} = live(conn, ~p"/")
 
@@ -77,6 +77,26 @@ defmodule ElxproFeedWeb.PageLive.FeedTest do
     comments = Feeds.get_comments(feed_id)
 
     assert comments |> Enum.count() >= 2
+
+    Enum.each(comments, fn comment ->
+      assert has_element?(view, "#comment-#{comment.id}")
+    end)
+  end
+
+  test "add comment - failed", %{conn: conn} do
+    comment = comment_fixture()
+    {:ok, view, _html} = live(conn, ~p"/")
+
+    feed_id = comment.feed_id
+
+    # comment field is changed and a value of nil is not added
+    view
+    |> form("#comment-form-#{feed_id}", %{comment: %{content: nil}})
+    |> render_submit()
+
+    comments = Feeds.get_comments(feed_id)
+
+    assert comments |> Enum.count() == 1
 
     Enum.each(comments, fn comment ->
       assert has_element?(view, "#comment-#{comment.id}")
