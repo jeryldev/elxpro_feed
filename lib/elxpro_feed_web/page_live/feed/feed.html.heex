@@ -23,7 +23,7 @@
       </div>
     </div>
     <time class="text-sm text-gray-400" data-role="feed-date" data-id={@feed.id}>
-      published at January
+      published at <%= published_at(@feed.inserted_at) %>
     </time>
   </header>
 
