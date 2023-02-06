@@ -12,18 +12,26 @@ defmodule ElxproFeedWeb.PageLive.Feed.Comment do
     likes = comment.likes + 1
     comment_params = %{"likes" => likes}
 
-    {:ok, comment} = Comments.update_comment(comment, comment_params)
+    case Comments.update_comment(comment, comment_params) do
+      {:ok, comment} ->
+        {:noreply, update(socket, :comment, &%{&1 | likes: comment.likes})}
 
-    {:noreply, update(socket, :comment, &%{&1 | likes: comment.likes})}
+      {:error, _reason} ->
+        {:noreply, socket}
+    end
   end
 
   def handle_event("delete_comment", _params, socket) do
     comment = socket.assigns.comment
 
-    {:ok, comment} = Comments.delete_comment(comment)
+    case Comments.delete_comment(comment) do
+      {:ok, comment} ->
+        send_update(Feed, id: comment.feed_id, delete_comment: comment)
 
-    send_update(Feed, id: comment.feed_id, delete_comment: comment)
+        {:noreply, socket}
 
-    {:noreply, socket}
+      {:error, _reason} ->
+        {:noreply, socket}
+    end
   end
 end
