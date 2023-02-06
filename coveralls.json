@@ -6,7 +6,9 @@
         "lib/elxpro_feed_web/router.ex",
         "lib/elxpro_feed_web/components/core_components.ex",
         "lib/elxpro_feed_web/views/error_helpers.ex",
-        "test/support/data_case.ex"
+        "test/support/data_case.ex",
+        "lib/elxpro_feed/release.ex",
+        "lib/elxpro_feed/global_setup.ex"
     ],
     "coverage_options": {
         "treat_no_relevant_lines_as_covered": true,
