@@ -1,6 +1,7 @@
 defmodule ElxproFeedWeb.PageLive.Feed.Comment do
   use ElxproFeedWeb, :live_component
 
+  import ElxproFeed.Shared.DateUtils
   import ElxproFeedWeb.PageLive.Shared.Components
 
   alias ElxproFeed.Comments

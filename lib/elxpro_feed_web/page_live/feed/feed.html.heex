@@ -22,8 +22,14 @@
         </span>
       </div>
     </div>
-    <time class="text-sm text-gray-400" data-role="feed-date" data-id={@feed.id}>
-      published at January
+    <time
+      class="text-sm text-gray-400"
+      data-role="feed-date"
+      data-id={@feed.id}
+      title={format_date(@feed.inserted_at)}
+      dateTime={@feed.inserted_at}
+    >
+      published <%= published_at(@feed.inserted_at) %>
     </time>
   </header>
 

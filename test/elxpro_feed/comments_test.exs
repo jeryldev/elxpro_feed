@@ -12,8 +12,8 @@ defmodule ElxproFeed.CommentsTest do
 
     test "list_comments/0 returns all comments" do
       comment = comment_fixture()
-      # assert Comments.list_comments() == [comment]
       comments = Comments.list_comments()
+
       assert Enum.member?(comments, comment)
       assert Comments.list_comments() |> Enum.count() > 0
     end

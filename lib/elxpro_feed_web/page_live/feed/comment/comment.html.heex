@@ -6,13 +6,13 @@
         <div>
           <strong data-role="user-name" data-id={@comment.id}>Jeryl Estopace</strong>
           <time
-            title="maymonth"
-            dateTime="2023"
             data-role="date"
             data-id={@comment.id}
             class="block text-xs leading-relaxed text-gray-400"
+            title={format_date(@comment.inserted_at)}
+            dateTime={@comment.inserted_at}
           >
-            around 1 hour ago
+            <%= published_at(@comment.inserted_at) %>
           </time>
         </div>
 
